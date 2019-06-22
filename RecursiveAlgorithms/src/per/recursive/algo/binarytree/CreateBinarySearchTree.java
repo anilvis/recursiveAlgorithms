@@ -67,7 +67,7 @@ public class CreateBinarySearchTree {
 		input.add(7);
 		for(int i = 1; i<input.size(); i++)
 		{
-			Node insertNode = new Node(input.get(i),null,null,null);
+		Node insertNode = new Node(input.get(i),null,null,null);
 	        insertedNode = 	insertNode(parentNode,insertNode);
 		}
 		System.out.println("last node inserted data " +insertedNode.data);
