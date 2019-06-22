@@ -10,11 +10,13 @@ public class CreateBinarySearchTree {
 		if(insertNode.data <headNode.data && headNode.leftNode == null)
 		{
 			headNode.leftNode = insertNode;
+			insertNode.parentNode = headNode;
 			return insertNode;
 		}
 		if(insertNode.data >=headNode.data && headNode.rightNode == null)
 		{
 			headNode.rightNode = insertNode;
+			insertNode.parentNode = headNode;
 			return insertNode;
 		}
 		else
@@ -35,7 +37,7 @@ public class CreateBinarySearchTree {
 	}
 	public static void main(String[] args) {
 		
-		Node parentNode = new Node(6,null,null);
+		Node parentNode = new Node(6,null,null,null);
 		Node insertedNode = new Node();
 		ArrayList<Integer> input = new ArrayList<Integer>();
 		input.add(6);
@@ -46,11 +48,12 @@ public class CreateBinarySearchTree {
 		input.add(7);
 		for(int i = 1; i<input.size(); i++)
 		{
-			Node insertNode = new Node(input.get(i),null,null);
+			Node insertNode = new Node(input.get(i),null,null,null);
 	        insertedNode = 	insertNode(parentNode,insertNode);
 		}
 		System.out.println("head node data "+parentNode.data);
-		System.out.println("left node data" +insertedNode.data);
+		System.out.println("last node inserted data " +insertedNode.data);
+		System.out.println("last node parent data " +insertedNode.parentNode.data);
 
 	}
 }
