@@ -33,8 +33,27 @@ public class CreateBinarySearchTree {
 			}
 		}
 		
+	}
+	public static Node getParentNodeFromLeafNode(Node leafNode)
+	{
+		if(leafNode.parentNode == null)
+			return leafNode;
+		else
+		{
+			return getParentNodeFromLeafNode(leafNode.parentNode);
+		}
 		
 	}
+	public static Node getTheRightMostLeafOfBST(Node parentNode)
+	{
+		if(parentNode.rightNode == null)
+			return parentNode;
+		else
+		{
+			return getTheRightMostLeafOfBST(parentNode.rightNode);
+		}
+	}
+	
 	public static void main(String[] args) {
 		
 		Node parentNode = new Node(6,null,null,null);
@@ -51,9 +70,11 @@ public class CreateBinarySearchTree {
 			Node insertNode = new Node(input.get(i),null,null,null);
 	        insertedNode = 	insertNode(parentNode,insertNode);
 		}
-		System.out.println("head node data "+parentNode.data);
 		System.out.println("last node inserted data " +insertedNode.data);
 		System.out.println("last node parent data " +insertedNode.parentNode.data);
+		System.out.println("parent node of the created binary tree " +getParentNodeFromLeafNode(insertedNode).data);
+		System.out.println("right node of parent node of the created binary search tree " +getParentNodeFromLeafNode(insertedNode).rightNode.data);
+		System.out.println("last leaf node of the created binary search tree " +getTheRightMostLeafOfBST(getParentNodeFromLeafNode(insertedNode)).data);
 
 	}
 }
